@@ -28,10 +28,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_113725) do
     t.datetime "remember_created_at"
     t.integer "user_type"
     t.string "phone", limit: 10
+    t.uuid "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_users_on_category_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["phone"], name: "index_users_on_phone", unique: true
   end
 
+  add_foreign_key "users", "categories"
 end
