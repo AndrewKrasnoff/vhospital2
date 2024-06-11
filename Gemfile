@@ -4,6 +4,7 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
+gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
 gem 'importmap-rails'
 gem 'jbuilder'
