@@ -12,7 +12,7 @@ module Patients
     protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:phone, :email, :password, :type) }
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:phone, :email, :password, :user_type) }
       devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:phone, :email, :password, :current_password) }
       devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:phone) }
     end
