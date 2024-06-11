@@ -10,6 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
 
       t.integer :user_type
       t.string  :phone, limit: 10
+      t.references :category, type: :uuid, foreign_key: true
 
       t.timestamps null: false
     end

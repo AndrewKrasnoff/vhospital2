@@ -8,12 +8,16 @@
 #  remember_created_at :datetime
 #  user_type           :integer
 #  phone               :string(10)
+#  category_id         :uuid
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
 FactoryBot.define do
   factory :user do
-    user_type { :patient }
-    phone     { '1234567890' }
+    email                 { Faker::Internet.email }
+    user_type             { User.user_types.to_a.sample[0] }
+    phone                 { Faker::Number.number(digits: 10).to_s }
+    password              { 'password' }
+    password_confirmation { 'password' }
   end
 end
