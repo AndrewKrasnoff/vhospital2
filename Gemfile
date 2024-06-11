@@ -4,6 +4,7 @@ ruby '3.2.2'
 
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
+gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'pg', '~> 1.5', '>= 1.5.6'
@@ -17,8 +18,12 @@ gem 'tzinfo-data', platforms: %i[windows jruby]
 group :development, :test do
   gem 'annotate', '~> 3.2'
   gem 'debug', platforms: %i[mri windows]
+  gem 'rspec-rails', '~> 6.1', '>= 6.1.2'
   gem 'rubocop', '~> 1.64', '>= 1.64.1', require: false
+  gem 'rubocop-factory_bot', '~> 2.26',  require: false
   gem 'rubocop-rails', '~> 2.25',        require: false
+  gem 'rubocop-rspec', '~> 2.31',        require: false
+  gem 'rubocop-rspec_rails', '~> 2.29',  require: false
 end
 
 group :development do
@@ -26,4 +31,5 @@ group :development do
 end
 
 group :test do
+  gem 'shoulda-matchers', '~> 6.2'
 end
