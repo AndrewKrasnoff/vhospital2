@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
+gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
 gem 'devise', '~> 4.9', '>= 4.9.4'
@@ -16,10 +17,6 @@ gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'sprockets-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
-
-group :production do
-  gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
-end
 
 group :development, :test do
   gem 'annotate', '~> 3.2'
