@@ -6,7 +6,7 @@
 #  email               :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
-#  user_type           :integer
+#  type                :string
 #  phone               :string(10)
 #  category_id         :uuid
 #  created_at          :datetime         not null
@@ -15,8 +15,6 @@
 class User < ApplicationRecord
   # == Extensions ===========================================================
   devise :database_authenticatable, :registerable, :rememberable, :validatable
-
-  enum user_type: { admin: 0, patient: 1, doctor: 2 }
 
   # == Constants ============================================================
 

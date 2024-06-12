@@ -13,19 +13,12 @@
 #  updated_at          :datetime         not null
 #
 FactoryBot.define do
-  factory :user do
-    transient do
-      category { association :category }
-    end
-
+  factory :doctor do
     email                 { Faker::Internet.email }
-    type                  { %w[Admin Patient Doctor].sample }
+    type                  { 'Doctor' }
     phone                 { Faker::Number.number(digits: 10).to_s }
+    category              { association :category }
     password              { 'password' }
     password_confirmation { 'password' }
-
-    after(:create) do |user, evaluator|
-      user.update(category: evaluator.category) if user.type == 'Doctor'
-    end
   end
 end
