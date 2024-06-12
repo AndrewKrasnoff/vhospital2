@@ -15,7 +15,7 @@ https://vhospital-cod.herokuapp.com/
 | Database         | PostgreSQL                                                                                             |
 | Server           | Puma                                                                                                   |
 | Testing Tools    | RSpec<br/>Shoulda Matchers<br/>FactoryBot<br/>Faker                                                    |
-| Linters          | Rubocop<br/>ERBLint<br/>ESLint                                                                         |
+| Linters          | Rubocop<br/>ERBLint                                                                         |
 | Authorization    | Cancancan                                                                                              |
 | Authentication   | Devise                                                                                                 |
 

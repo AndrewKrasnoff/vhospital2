@@ -7,11 +7,11 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <%= link_to 'Home', root_path, class: 'nav-link active'  %>
+          <%= link_to 'Home', root_path, class: 'nav-link active' %>
         </li>
         <% if user_signed_in? && (current_user.type == 'Doctor' || current_user.type == 'Patient') %>
           <li class="nav-item">
-            <%= link_to 'Appointments', appointments_path, class: 'nav-link active'  %>
+            <%= link_to 'Appointments', appointments_path, class: 'nav-link active' %>
           </li>
         <% end %>
         <% if user_signed_in? && current_user.type == 'Admin' %>
@@ -33,7 +33,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <% Category.order(:name).each do |category| %>
-              <%= link_to category.name, category, class: "dropdown-item"%>
+              <%= link_to category.name, category, class: "dropdown-item" %>
             <% end %>
           </ul>
         </li>
