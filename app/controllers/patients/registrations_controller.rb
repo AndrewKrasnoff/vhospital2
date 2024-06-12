@@ -4,7 +4,7 @@ module Patients
     protect_from_forgery with: :exception
 
     def create
-      params[:user] = params[:user]&.merge(user_type: 'Patient')
+      params[:user] = params[:user]&.merge(type: 'Patient')
 
       super
     end
