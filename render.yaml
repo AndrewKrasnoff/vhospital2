@@ -1,0 +1,22 @@
+databases:
+  - name: vhospital2
+    databaseName: vhospital2_production
+    user: vhospital2
+    plan: free
+
+services:
+  - type: web
+    name: vhospital2
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vhospital2_production
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2
