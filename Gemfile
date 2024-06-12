@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
-gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
 gem 'devise', '~> 4.9', '>= 4.9.4'
@@ -18,9 +17,14 @@ gem 'sprockets-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
+group :production do
+  gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
+end
+
 group :development, :test do
   gem 'annotate', '~> 3.2'
   gem 'debug', platforms: %i[mri windows]
+  gem 'erb_lint', '~> 0.5.0'
   gem 'rspec-rails', '~> 6.1', '>= 6.1.2'
   gem 'rubocop', '~> 1.64', '>= 1.64.1', require: false
   gem 'rubocop-factory_bot', '~> 2.26',  require: false
