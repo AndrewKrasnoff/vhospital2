@@ -14,6 +14,7 @@ gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
 gem 'sassc-rails', '~> 2.1', '>= 2.1.2'
 gem 'sprockets-rails'
+gem 'therubyracer', '~> 0.12.3'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[windows jruby]
 
