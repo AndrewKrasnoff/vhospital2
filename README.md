@@ -32,33 +32,33 @@ https://vhospital-cod.herokuapp.com/
 
 ### Task description
 
-To create application to manage hospital
+To create an application to manage the hospital
 
 Users' types:
 - patient (User)
 - doctor (Doctor)
 - admin (Admin)
 
-Each type of users should have such functionality:
+Each type of user should have such functionality:
 
-1. Patient can register and login to it account. Can see doctoctors' list by categories,
-can make assignment with any doctor, and can recieve recommendations from doctor.
-2. Doctor can login to it account. Can see list of assignments, write an answer to patient.
-Doctor is assigned to one of the categiries.
-3. Admin has access to lists of patients and doctros. Can create category and assign (reassign) doctors to categories.
+1. The patient can register and log in to his account. Can see doctors' lists by categories,
+can make assignments with any doctor, and can receive recommendations from doctors.
+2. Doctor can log in to it account. Can see a list of assignments, and write an answer to the patient.
+The doctor is assigned to one of the categories.
+3. Admin has access to lists of patients and doctors. Can create categories and assign (reassign) doctors to categories.
 
 Authentication and authorization requirements:
 - use gem devise for authentication;
 - use gem cancancan for authorization
-- all users can login using their phone number and password;
+- all users can log in using their phone number and password;
 
 
 Categories requirements:
-- validation by uniq name;
-- can by assigned to several doctors;
+- validation by a unique name;
+- can be assigned to several doctors;
 
 Assignments requirements:
-- doctor can have only 10 open (not answered) assignments at a time;
-- patient can hane only 1 (not answered) assignment with the same doctor;
-- assignment is closed (ad stred, not deleted) when doctor write an answe to patent;
+- a doctor can have only 10 open (not answered) assignments at a time;
+- a patient can have only 1 (not answered) assignment with the same doctor;
+- the assignment is closed (not deleted) when the doctor writes an answer to the patent;
 
