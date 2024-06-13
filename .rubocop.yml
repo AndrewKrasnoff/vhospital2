@@ -18,3 +18,7 @@ Style/Documentation:
 Rails/Output:
   Exclude:
     - db/seeds.rb
+
+FactoryBot/ExcessiveCreateList:
+  Exclude:
+    - spec/models/doctor_spec.rb

@@ -13,7 +13,7 @@ class AppointmentsController < ApplicationController
     @doctor = Doctor.find(params[:doctor_id])
     if patient_has_appointment?
       redirect_to appointments_path, info: I18n.t('flash_messages.appointments.assigned')
-    elsif doctor_active_appointments >= 10
+    elsif !@doctor.available?
       redirect_to category_path(@doctor.category_id),
                   info: I18n.t('flash_messages.appointments.has_ten')
     else
@@ -63,10 +63,6 @@ class AppointmentsController < ApplicationController
 
   def patient_has_appointment?
     Appointment.exists?(patient_id: current_user.id, doctor_id: @doctor.id, answer: nil)
-  end
-
-  def doctor_active_appointments
-    Appointment.where(doctor_id: @doctor.id, answer: nil).count
   end
 
   def appointments

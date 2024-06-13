@@ -19,4 +19,38 @@ RSpec.describe Doctor do
     it { is_expected.to belong_to(:category) }
     it { is_expected.to have_many(:appointments).dependent(:nullify) }
   end
+
+  describe 'instance methods' do
+    describe '#available?' do
+      context 'when doctor has more than 10 opened (without answer) appointments' do
+        let!(:doctor) { create(:doctor) }
+
+        before { create_list(:appointment, 15, doctor:) }
+
+        it 'returns FALSE' do
+          expect(doctor.available?).to be false
+        end
+      end
+
+      context 'when doctor has 10 opened (without answer) appointments' do
+        let!(:doctor) { create(:doctor) }
+
+        before { create_list(:appointment, 10, doctor:) }
+
+        it 'returns FALSE' do
+          expect(doctor.available?).to be false
+        end
+      end
+
+      context 'when doctor has less than 10 opened (without answer) appointments' do
+        let!(:doctor) { create(:doctor) }
+
+        before { create_list(:appointment, 8, doctor:) }
+
+        it 'returns TRUE' do
+          expect(doctor.available?).to be true
+        end
+      end
+    end
+  end
 end

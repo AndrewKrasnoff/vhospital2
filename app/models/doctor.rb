@@ -32,4 +32,7 @@ class Doctor < User
   # == Class Methods ========================================================
 
   # == Instance Methods =====================================================
+  def available?
+    appointments.count < 10
+  end
 end
