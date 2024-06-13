@@ -1,9 +1,43 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+FactoryBot.create(:admin, phone: '1234567890')
+
+puts '✅ | Admin user created'
+puts '🔑 | phone:     1234567890'
+puts '🔑 | password:  password'
+puts '🔥 | -'
+puts
+
+FactoryBot.create_list(:category, 5)
+
+puts '✅ | Categories created'
+puts '🔥 | -'
+puts
+
+10.times do
+  FactoryBot.create(:doctor, category_id: Category.ids.sample)
+end
+
+puts '✅ | Doctors created'
+puts '🔥 | -'
+puts
+
+FactoryBot.create_list(:patient, 15)
+
+puts '✅ | Patients created'
+puts '🔥 | -'
+puts
+
+30.times do
+  FactoryBot.create(:appointment, doctor_id: Doctor.ids.sample, patient_id: Patient.ids.sample)
+end
+
+puts '✅ | Open (without answer) appointments ceated'
+puts '🔥 | -'
+puts
+
+30.times do
+  FactoryBot.create(:appointment, :with_answer, doctor_id: Doctor.ids.sample, patient_id: Patient.ids.sample)
+end
+
+puts '✅ | Closed (with answer) appointments ceated'
+puts '🔥 | -'
+puts

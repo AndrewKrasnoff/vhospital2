@@ -12,6 +12,10 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
-class Patient < User
-  has_many :appointments, dependent: :nullify
+require 'rails_helper'
+
+RSpec.describe Patient do
+  describe 'associations' do
+    it { is_expected.to have_many(:appointments).dependent(:nullify) }
+  end
 end

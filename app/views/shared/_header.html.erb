@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1">vHospital</span>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -9,12 +10,12 @@
         <li class="nav-item">
           <%= link_to 'Home', root_path, class: 'nav-link active' %>
         </li>
-        <% if user_signed_in? && (current_user.type == 'Doctor' || current_user.type == 'Patient') %>
+        <% if user_signed_in? && (current_user.doctor? || current_user.patient?) %>
           <li class="nav-item">
             <%= link_to 'Appointments', appointments_path, class: 'nav-link active' %>
           </li>
         <% end %>
-        <% if user_signed_in? && current_user.type == 'Admin' %>
+        <% if user_signed_in? && current_user.admin? %>
           <li class="nav-item">
              <%= link_to 'Doctors', doctors_path, class: 'nav-link active' %>
           </li>
@@ -26,7 +27,7 @@
           </li>
         <% end %>
 
-        <% if user_signed_in? && current_user.type == 'Patient' %>
+        <% if user_signed_in? && current_user.patient? %>
         <li class="nav-item dropdown avtive">
           <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
             Doctors
@@ -55,7 +56,7 @@
   </div>
 </nav>
 <% if user_signed_in? %>
-  <div class="alert alert-secondary" role="alert">
+  <div class="alert alert-secondary mt-1" role="alert">
     <b>User:</b>&nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.type %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.email %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.phone %>

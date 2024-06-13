@@ -1,7 +1,7 @@
-<% if resource.errors.any? %>
+<% if appointment.errors.any? %>
   <div class="alert alert-danger text-start" role="alert">
     <ul>
-      <% resource.errors.full_messages.each do |message| %>
+      <% appointment.errors.full_messages.each do |message| %>
         <small><li><%= message %></li></small>
       <% end %>
     </ul>

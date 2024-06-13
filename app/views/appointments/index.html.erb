@@ -1,0 +1,31 @@
+<h4>Your appointments</h4>
+<table class="table">
+
+  <thead>
+    <tr>
+      <% if current_user.patient? %>
+        <th>#</th>
+        <th>Doctor</th>
+        <th>Phone</th>
+        <th>Specialization</th>
+        <th>Created At</th>
+        <th>Closed At</th>
+        <th>Status</th>
+        <th></th>
+      <% end %>
+      <% if current_user.doctor? %>
+        <th>#</th>
+        <th>Patient</th>
+        <th>Phone</th>
+        <th>Created At</th>
+        <th>Closed At</th>
+        <th>Status</th>
+        <th></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @appointments %>
+  <tbody>
+</table>
+<% flash.now[:info] = I18n.t('flash_messages.appointments.no_appointments') if @appointments.count.zero? %>
