@@ -5,6 +5,7 @@ ruby '3.2.2'
 gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
+gem 'cancancan', '~> 3.6', '>= 3.6.1'
 gem 'devise', '~> 4.9', '>= 4.9.4'
 gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
 gem 'faker', '~> 3.4', '>= 3.4.1'

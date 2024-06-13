@@ -16,6 +16,8 @@ en:
       updated: 'Category was updated successfuly'
       not_updated: 'Category was not updated'
       no_doctors: 'There are no Doctors in %{category_name}'
+    cancancan:
+      access_denied: 'Access denied!'
 
   time:
     formats:
