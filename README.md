@@ -4,7 +4,10 @@
 
 ### Deployed at
 
-https://vhospital-cod.herokuapp.com/
+https://vhospital2.onrender.com/
+
+**As hosting is free the application is in 'sleeping' mode.
+Please wait about 60 seconds when you follow the link to let the application 'awake'**
 
 ### Stack & Features
 
