@@ -10,24 +10,24 @@ https://vhospital-cod.herokuapp.com/
 
 | Name             | Technologies                                                                                           |
 |------------------|--------------------------------------------------------------------------------------------------------|
-| Backend          | Ruby 3.2.4<br/>Rails 7.1                                                                               |
+| Backend          | Ruby 3.2.2<br/>Rails 7.1                                                                               |
 | Frontend         | CSS, SCSS<br/>HTML, ERB<br/>Bootstrap                                                                  |
 | Database         | PostgreSQL                                                                                             |
 | Server           | Puma                                                                                                   |
 | Testing Tools    | RSpec<br/>Shoulda Matchers<br/>FactoryBot<br/>Faker                                                    |
-| Linters          | Rubocop<br/>ERBLint                                                                         |
+| Linters          | Rubocop<br/>ERBLint                                                                                    |
 | Authorization    | Cancancan                                                                                              |
 | Authentication   | Devise                                                                                                 |
 
 ### Credentials
 
-| User type       | Login                                       | Password          |
-|-----------------|---------------------------------------------|-------------------|
-| Admin           | 1234567890                                  | test123           |
-|                 |                                             |                   |
-| Patients        | See list of patients<br/>when login as admin| 123456<br/>for all|
-|                 |                                             |                   |
-| Doctors         | See list of doctors<br/>when login as admin | 123456<br/>for all|
+| User type       | Login                                       | Password            |
+|-----------------|---------------------------------------------|---------------------|
+| Admin           | 1234567890                                  | password            |
+|                 |                                             |                     |
+| Patients        | See list of patients<br/>when login as admin| password<br/>for all|
+|                 |                                             |                     |
+| Doctors         | See list of doctors<br/>when login as admin | password<br/>for all|
 
 
 ### Task description

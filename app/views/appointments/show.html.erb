@@ -1,0 +1,33 @@
+<div class="row justify-content-center">
+  <div class="col-8 text-center">
+    <h4><%= "Appointment ##{@appointment.id} #{Appointment::CLOSED}" if @appointment.answer.present? %></h4>
+    <div class="text-start">
+      <% if current_user.patient? %>
+        <b>Doctor: </b><%= @appointment.doctor.email %><br>
+        <b>Specialization: </b><%= @appointment.doctor.category.name %>
+      <% end %>
+      <% if current_user.doctor? %>
+        <b>Patient: </b><%= @appointment.patient.email %>
+      <% end %>
+
+      <div class="row justify-content-evenly mt-4">
+        <div class="col-6">
+          <div class="mb-3 fw-bold">Question:</div>
+          <div class="alert alert-secondary" role="alert">
+            <%= @appointment.question %>
+          </div>
+        </div>
+      <div class="col-6">
+          <div class="mb-3 fw-bold">Answer:</div>
+          <div class="alert alert-primary" role="alert">
+            <%= @appointment.answer ? @appointment.answer : I18n.t('flash_messages.appointments.no_answer') %>
+          </div>
+        </div>
+      </div>
+      <% if current_user.doctor? && !@appointment.answer %>
+        <%= link_to 'Send Answer', edit_appointment_path(@appointment), class: 'btn btn-primary btn-sm' %>
+      <% end %>
+      <%= link_to 'Back', :back, class: 'btn btn-outline-secondary btn-sm' %>
+    </div>
+  </div>
+</div>

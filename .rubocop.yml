@@ -14,3 +14,7 @@ Style/FrozenStringLiteralComment:
 
 Style/Documentation:
   Enabled: false
+
+Rails/Output:
+  Exclude:
+    - db/seeds.rb

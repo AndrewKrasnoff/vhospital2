@@ -1,0 +1,22 @@
+<tr>
+  <td><%= appointment.short_id %></td>
+  <% if current_user.patient? %>
+    <td><%= appointment.doctor.email %></td>
+    <td><%= appointment.doctor.phone %></td>
+    <td><%= appointment.doctor.category.name %></td>
+  <% end %>
+  <% if current_user.doctor? %>
+    <td><%= appointment.patient.email %></td>
+    <td><%= appointment.patient.phone %></td>
+  <% end %>
+  <td><%= I18n.l(appointment.created_at, format: :datetime) %></td>
+  <td><%= I18n.l(appointment.updated_at, format: :datetime ) if appointment.answer.present? %></td>
+  <td><%= appointment.answer ? Appointment::CLOSED : Appointment::PENDING %></td>
+  <td>
+    <%= link_to 'View', appointment_path(appointment), class: 'btn btn-primary btn-sm' %>
+    <% if current_user.doctor? && !appointment.answer %>
+      <%= link_to 'Send Answer', edit_appointment_path(appointment), class: 'btn btn-primary btn-sm' %>
+    <% end %>
+  </td>
+
+</tr>

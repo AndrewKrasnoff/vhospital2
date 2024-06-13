@@ -1,29 +1,31 @@
 # == Schema Information
 #
-# Table name: users
+# Table name: appointments
 #
-#  id                  :uuid             not null, primary key
-#  email               :string           default(""), not null
-#  encrypted_password  :string           default(""), not null
-#  remember_created_at :datetime
-#  type                :string
-#  phone               :string(10)
-#  category_id         :uuid
-#  created_at          :datetime         not null
-#  updated_at          :datetime         not null
+#  id         :uuid             not null, primary key
+#  doctor_id  :uuid
+#  patient_id :uuid
+#  question   :text
+#  answer     :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
-class User < ApplicationRecord
+class Appointment < ApplicationRecord
   # == Extensions ===========================================================
-  devise :database_authenticatable, :registerable, :rememberable, :validatable
 
   # == Constants ============================================================
+  PENDING = 'PENDING'.freeze
+  CLOSED  = 'CLOSED'.freeze
 
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
+  belongs_to :doctor
+  belongs_to :patient
 
   # == Validations ==========================================================
-  validates :phone, presence: true, uniqueness: true, format: { with: /\d{10}/ }
+  validates :question, presence: true
+  validates :answer,   presence: true, if: :should_validate?
 
   # == Scopes ===============================================================
 
@@ -32,15 +34,13 @@ class User < ApplicationRecord
   # == Class Methods ========================================================
 
   # == Instance Methods =====================================================
-  def doctor?
-    type == 'Doctor'
+  def short_id
+    "#{id[0..4]}...#{id[-5..]}"
   end
 
-  def patient?
-    type == 'Patient'
-  end
+  private
 
-  def admin?
-    type == 'Admin'
+  def should_validate?
+    !new_record?
   end
 end
