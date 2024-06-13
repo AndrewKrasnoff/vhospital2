@@ -15,6 +15,7 @@ en:
       not_created: 'Category was not created'
       updated: 'Category was updated successfuly'
       not_updated: 'Category was not updated'
+      no_doctors: 'There are no Doctors in %{category_name}'
 
   time:
     formats:

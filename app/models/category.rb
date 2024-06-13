@@ -15,7 +15,7 @@ class Category < ApplicationRecord
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
-  has_many :users, dependent: :nullify
+  has_many :doctors, dependent: :nullify
 
   # == Validations ==========================================================
   validates :name, presence: true, uniqueness: { case_sensitive: false }

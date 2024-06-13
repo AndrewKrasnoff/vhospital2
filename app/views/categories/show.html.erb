@@ -1,0 +1,18 @@
+<h4><%= @category.name %></h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>Phone</th>
+      <th>Appointments</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render @doctors %>
+  <tbody>
+</table>
+
+<% flash.now[:info] =
+  I18n.t('flash_messages.categories.no_doctors', category_name: @category.name) if @doctors.count.zero? %>
