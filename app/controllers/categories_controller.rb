@@ -8,7 +8,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    @doctors = Doctor.where(category_id: @category).order(:email)
+    @doctors = User.where(role: :doctor, category_id: @category).order(:email)
   end
 
   def new

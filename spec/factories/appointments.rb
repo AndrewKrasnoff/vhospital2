@@ -3,8 +3,8 @@
 # Table name: appointments
 #
 #  id         :uuid             not null, primary key
-#  doctor_id  :uuid
-#  patient_id :uuid
+#  doctor_id  :uuid             not null
+#  patient_id :uuid             not null
 #  question   :text
 #  answer     :text
 #  created_at :datetime         not null
@@ -16,8 +16,8 @@ FactoryBot.define do
       answer { Faker::Lorem.sentence }
     end
 
-    doctor   { association :doctor }
-    patient  { association :patient }
+    doctor   { association :user, role: :doctor }
+    patient  { association :user, role: :patient }
     question { Faker::Lorem.sentence }
 
     trait :with_answer do

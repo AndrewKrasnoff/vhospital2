@@ -1,42 +1,35 @@
-# frozen_string_literal: true
-
 class DoctorsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
-  before_action :set_doctor, only: %i[update edit]
+  authorize_resource class: false
 
   def index
-    @doctors = Doctor.includes(:category).order('categories.name', :email)
+    render :index, locals: { doctors: }
   end
 
   def edit
-    @categories = cateories_list(@doctor)
+    render :edit, locals: { doctor: }
   end
 
   def update
-    if @doctor.update(doctor_params)
+    if doctor.update(doctor_params)
       redirect_to doctors_path, success: I18n.t('flash_messages.categories.updated')
     else
       flash.now[:danger] = I18n.t('flash_messages.categories.not_updated')
-      render :edit
+      render :edit, locals: { doctor: }
     end
   end
 
   private
 
-  def set_doctor
-    @doctor = Doctor.find(params[:id])
+  def doctor
+    @doctor = User.find(params[:id])
+  end
+
+  def doctors
+    User.where(role: :doctor).includes(:category).order('categories.name', :email)
   end
 
   def doctor_params
-    params.require(:doctor).permit(:category_id)
-  end
-
-  def cateories_list(doctor)
-    if doctor.category.present?
-      Category.where.not(id: doctor.category.id).order(:name)
-    else
-      Category.all
-    end
+    params.require(:user).permit(:category_id)
   end
 end

@@ -1,8 +1,8 @@
 class PatientsController < ApplicationController
   before_action :authenticate_user!
-  load_and_authorize_resource
+  authorize_resource class: false
 
   def index
-    @patients = Patient.order(:email)
+    @patients = User.where(role: :patient).order(:email)
   end
 end

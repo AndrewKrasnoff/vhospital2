@@ -22,3 +22,12 @@ Rails/Output:
 FactoryBot/ExcessiveCreateList:
   Exclude:
     - spec/models/doctor_spec.rb
+
+RSpec/NestedGroups:
+  Max: 5
+
+RSpec/MultipleExpectations:
+  Max: 5
+
+RSpec/ExampleLength:
+  Max: 10

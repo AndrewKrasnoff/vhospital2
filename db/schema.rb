@@ -16,12 +16,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_051746) do
   enable_extension "plpgsql"
 
   create_table "appointments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "doctor_id"
-    t.uuid "patient_id"
+    t.uuid "doctor_id", null: false
+    t.uuid "patient_id", null: false
     t.text "question"
     t.text "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["doctor_id"], name: "index_appointments_on_doctor_id"
+    t.index ["patient_id"], name: "index_appointments_on_patient_id"
   end
 
   create_table "categories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -35,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_051746) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
-    t.string "type"
+    t.integer "role"
     t.string "phone", limit: 10
     t.uuid "category_id"
     t.datetime "created_at", null: false
@@ -45,5 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_051746) do
     t.index ["phone"], name: "index_users_on_phone", unique: true
   end
 
+  add_foreign_key "appointments", "users", column: "doctor_id"
+  add_foreign_key "appointments", "users", column: "patient_id"
   add_foreign_key "users", "categories"
 end

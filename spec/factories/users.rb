@@ -6,7 +6,7 @@
 #  email               :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
-#  type                :string
+#  role                :integer
 #  phone               :string(10)
 #  category_id         :uuid
 #  created_at          :datetime         not null
@@ -19,13 +19,13 @@ FactoryBot.define do
     end
 
     email                 { Faker::Internet.email }
-    type                  { %w[Admin Patient Doctor].sample }
+    role                  { User.roles.to_a.sample[0] }
     phone                 { Faker::Number.number(digits: 10).to_s }
     password              { 'password' }
     password_confirmation { 'password' }
 
-    after(:create) do |user, evaluator|
-      user.update(category: evaluator.category) if user.type == 'Doctor'
+    before(:create) do |user, evaluator|
+      user.update(category: evaluator.category) if user.doctor?
     end
   end
 end
