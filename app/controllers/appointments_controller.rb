@@ -12,10 +12,9 @@ class AppointmentsController < ApplicationController
   def new
     @doctor = Doctor.find(params[:doctor_id])
     if patient_has_appointment?
-      redirect_to appointments_path, info: I18n.t('flash_messages.appointments.assigned')
+      redirect_to appointments_path, alert: I18n.t('flash_messages.appointments.assigned')
     elsif !@doctor.available?
-      redirect_to category_path(@doctor.category_id),
-                  info: I18n.t('flash_messages.appointments.has_ten')
+      redirect_to category_path(@doctor.category_id), alert: I18n.t('flash_messages.appointments.has_ten')
     else
       @appointment = Appointment.new
     end
@@ -24,7 +23,7 @@ class AppointmentsController < ApplicationController
   def edit
     return if @appointment.answer.nil?
 
-    redirect_to appointment_path(@appointment.id), info: I18n.t('flash_messages.appointments.closed')
+    redirect_to appointment_path(@appointment.id), alert: I18n.t('flash_messages.appointments.closed')
   end
 
   def create

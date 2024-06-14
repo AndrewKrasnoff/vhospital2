@@ -35,7 +35,7 @@ class CategoriesController < ApplicationController
     if @category.update(category_params)
       redirect_to categories_path, success: I18n.t('flash_messages.categories.updated')
     else
-      @categories = Category.where("id != #{@category.id}").order(:name)
+      @categories = Category.where.not(id: @category.id).order(:name)
       flash.now[:danger] = I18n.t('flash_messages.categories.not_updated')
       render :edit
     end

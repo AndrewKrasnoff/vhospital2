@@ -33,6 +33,6 @@ class Doctor < User
 
   # == Instance Methods =====================================================
   def available?
-    appointments.count < 10
+    appointments.where(answer: nil).count < 10
   end
 end
