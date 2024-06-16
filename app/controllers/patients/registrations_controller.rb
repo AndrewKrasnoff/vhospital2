@@ -1,4 +1,4 @@
-module Users
+module Patients
   class RegistrationsController < Devise::RegistrationsController
     before_action :configure_permitted_parameters
     protect_from_forgery with: :exception
@@ -12,7 +12,7 @@ module Users
     protected
 
     def configure_permitted_parameters
-      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:phone, :email, :password, :type) }
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:phone, :email, :password, :role) }
       devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:phone, :email, :password, :current_password) }
       devise_parameter_sanitizer.permit(:sign_in) { |u| u.permit(:phone) }
     end
