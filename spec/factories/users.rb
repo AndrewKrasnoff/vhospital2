@@ -19,7 +19,7 @@ FactoryBot.define do
     end
 
     email                 { Faker::Internet.email }
-    role                  { [0, 1, 2].sample }
+    role                  { User.roles.to_a.sample[1] }
     phone                 { Faker::Number.number(digits: 10).to_s }
     password              { 'password' }
     password_confirmation { 'password' }

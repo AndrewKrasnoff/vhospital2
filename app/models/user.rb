@@ -21,7 +21,7 @@ class User < ApplicationRecord
   # == Constants ============================================================
 
   # == Attributes ===========================================================
-  attribute :role, :string
+  # attribute :role, :string
 
   # == Relationships ========================================================
   with_options dependent: :destroy do
