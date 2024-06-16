@@ -1,4 +1,6 @@
-<tr>
-  <td><%= patient.email %></td>
-  <td><%= patient.phone %></td>
-</tr>
+<% patients.each do |patient| %>
+  <tr>
+    <td><%= patient.email %></td>
+    <td><%= patient.phone %></td>
+  </tr>
+<% end %>

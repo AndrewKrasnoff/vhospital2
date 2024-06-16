@@ -3,8 +3,8 @@
 # Table name: appointments
 #
 #  id         :uuid             not null, primary key
-#  doctor_id  :uuid
-#  patient_id :uuid
+#  doctor_id  :uuid             not null
+#  patient_id :uuid             not null
 #  question   :text
 #  answer     :text
 #  created_at :datetime         not null
@@ -20,8 +20,8 @@ class Appointment < ApplicationRecord
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
-  belongs_to :doctor
-  belongs_to :patient
+  belongs_to :doctor,  class_name: 'User'
+  belongs_to :patient, class_name: 'User'
 
   # == Validations ==========================================================
   validates :question, presence: true

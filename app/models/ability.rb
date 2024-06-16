@@ -6,17 +6,17 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
 
-    admin_access if user.type == 'Admin'
-    patient_access if user.type == 'Patient'
-    doctor_access if user.type == 'Doctor'
+    admin_access if user.admin?
+    patient_access if user.patient?
+    doctor_access if user.doctor?
   end
 
   private
 
   def admin_access
     can :manage, Category
-    can %i[index show update], Doctor
-    can :read, Patient
+    can %i[index show update], :doctor
+    can :read, :patient
   end
 
   def patient_access

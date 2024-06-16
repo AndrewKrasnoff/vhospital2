@@ -10,7 +10,7 @@ class AppointmentsController < ApplicationController
   def show; end
 
   def new
-    @doctor = Doctor.find(params[:doctor_id])
+    @doctor = User.find(params[:doctor_id])
     if patient_has_appointment?
       redirect_to appointments_path, alert: I18n.t('flash_messages.appointments.assigned')
     elsif !@doctor.available?
@@ -65,6 +65,9 @@ class AppointmentsController < ApplicationController
   end
 
   def appointments
-    current_user.type.classify.constantize.find(current_user.id).appointments
+    return if current_user.admin?
+
+    method_name = "#{current_user.role}_appointments"
+    current_user.send(method_name)
   end
 end

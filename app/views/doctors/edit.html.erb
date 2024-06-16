@@ -2,14 +2,14 @@
   <div class="col-4 text-center">
     <h4>Change doctor's category</h4>
     <div class="text-start">
-      <b>Doctor: </b><%= @doctor.email %><br>
-      <b>Current category: </b> <%= @doctor.category&.name %><br><br>
+      <b>Doctor: </b><%= doctor.email %><br>
+      <b>Current category: </b> <%= doctor.category&.name %><br><br>
 
-      <%= form_for @doctor do |form| %>
+      <%= form_for doctor, url: doctor_path do |form| %>
         <div class="mb-3">
           <%= form.label :select_new_category, class: 'form-label' %>
           <%= form.collection_select(:category_id,
-                                     @categories,
+                                     Category.where.not(id: doctor.category&.id).order(:name),
                                      :id,
                                      :name,
                                      {},

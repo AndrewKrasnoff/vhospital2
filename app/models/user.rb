@@ -6,7 +6,7 @@
 #  email               :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
-#  type                :string
+#  role                :integer
 #  phone               :string(10)
 #  category_id         :uuid
 #  created_at          :datetime         not null
@@ -16,14 +16,23 @@ class User < ApplicationRecord
   # == Extensions ===========================================================
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
+  enum role: { admin: 0, patient: 1, doctor: 2 }
+
   # == Constants ============================================================
 
   # == Attributes ===========================================================
 
   # == Relationships ========================================================
+  with_options dependent: :destroy do
+    has_many :doctor_appointments,  class_name: 'Appointment', foreign_key: 'doctor_id', inverse_of: 'doctor'
+    has_many :patient_appointments, class_name: 'Appointment', foreign_key: 'patient_id', inverse_of: 'patient'
+  end
+
+  belongs_to :category, optional: true
 
   # == Validations ==========================================================
-  validates :phone, presence: true, uniqueness: true, format: { with: /\d{10}/ }
+  validates :phone,    presence: true, uniqueness: true, format: { with: /\d{10}/ }
+  validates :category, presence: true, if: proc { |u| u.doctor? }
 
   # == Scopes ===============================================================
 
@@ -32,15 +41,9 @@ class User < ApplicationRecord
   # == Class Methods ========================================================
 
   # == Instance Methods =====================================================
-  def doctor?
-    type == 'Doctor'
-  end
+  def available?
+    return true unless doctor?
 
-  def patient?
-    type == 'Patient'
-  end
-
-  def admin?
-    type == 'Admin'
+    doctor_appointments.where(answer: nil).count < 10
   end
 end

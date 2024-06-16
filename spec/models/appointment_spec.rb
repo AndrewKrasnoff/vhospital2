@@ -3,8 +3,8 @@
 # Table name: appointments
 #
 #  id         :uuid             not null, primary key
-#  doctor_id  :uuid
-#  patient_id :uuid
+#  doctor_id  :uuid             not null
+#  patient_id :uuid             not null
 #  question   :text
 #  answer     :text
 #  created_at :datetime         not null

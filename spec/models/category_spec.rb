@@ -11,7 +11,7 @@ require 'rails_helper'
 
 RSpec.describe Category do
   describe 'associations' do
-    it { is_expected.to have_many(:doctors).dependent(:nullify) }
+    it { is_expected.to have_many(:users).dependent(:nullify) }
   end
 
   describe 'validations' do

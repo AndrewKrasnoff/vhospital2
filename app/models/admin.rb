@@ -6,7 +6,7 @@
 #  email               :string           default(""), not null
 #  encrypted_password  :string           default(""), not null
 #  remember_created_at :datetime
-#  type                :string
+#  role                :integer
 #  phone               :string(10)
 #  category_id         :uuid
 #  created_at          :datetime         not null
