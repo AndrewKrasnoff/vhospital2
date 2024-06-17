@@ -2,20 +2,20 @@
   <div class="col-4 text-center">
     <h4>New Appointment</h4>
 
-    <%= render 'appointments/errors', appointment: @appointment %>
+    <%= render 'appointments/errors', appointment: %>
 
     <div class="text-start mb-5">
-      <b>Doctor: </b><%= @doctor.email %><br>
-      <b>Specialization: </b><%= @doctor.category&.name %>
+      <b>Doctor: </b><%= doctor.email %><br>
+      <b>Specialization: </b><%= doctor.category&.name %>
     </div>
 
-    <%= form_for @appointment do |form| %>
-      <% if current_user.patient? %>
+    <% if current_user.patient? %>
+      <%= form_for appointment do |form| %>
         <div class="mb-3">
           <%= form.label :question, 'Your question', class: 'form-label' %>
           <%= form.text_area :question, class: 'form-control form-control-sm', style: 'min-height: 10em' %>
         </div>
-        <%= form.hidden_field :doctor_id, value: @doctor.id %>
+        <%= form.hidden_field :doctor_id, value: doctor.id %>
         <%= form.hidden_field :patient_id, value: current_user.id %>
 
         <div class="actions">
