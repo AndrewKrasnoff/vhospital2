@@ -1,17 +1,17 @@
 <div class="row justify-content-center">
   <div class="col-8 text-center">
-    <h4>Answer the Appointment #<%= @appointment.id %></h4>
+    <h4>Answer the Appointment #<%= appointment.id %></h4>
 
-    <%= render 'appointments/errors', appointment: @appointment %>
+    <%= render 'appointments/errors', appointment: appointment %>
 
     <div class="text-start">
-      <%= form_for @appointment do |form| %>
-      <b>Patient: </b><%= @appointment.patient.email %>
+      <%= form_for appointment do |form| %>
+      <b>Patient: </b><%= appointment.patient.email %>
       <div class="row justify-content-evenly mt-4">
         <div class="col-6">
           <div class="mb-3 fw-bold">Question:</div>
           <div class="alert alert-secondary" role="alert">
-            <%= @appointment.question %>
+            <%= appointment.question %>
           </div>
         </div>
         <div class="col-6">

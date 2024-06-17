@@ -1,44 +1,42 @@
 class AppointmentsController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_appointment, only: %i[show edit update]
 
   def index
-    @appointments = appointments
+    render :index, locals: { appointments: }
   end
 
   def show; end
 
   def new
-    @doctor = User.find(params[:doctor_id])
     if patient_has_appointment?
       redirect_to appointments_path, alert: I18n.t('flash_messages.appointments.assigned')
-    elsif !@doctor.available?
-      redirect_to category_path(@doctor.category_id), alert: I18n.t('flash_messages.appointments.has_ten')
+    elsif !doctor.available?
+      redirect_to category_path(doctor.category_id), alert: I18n.t('flash_messages.appointments.has_ten')
     else
-      @appointment = Appointment.new
+      render :new, locals: { appointment:, doctor: }
     end
   end
 
   def edit
-    return if @appointment.answer.nil?
-
-    redirect_to appointment_path(@appointment.id), alert: I18n.t('flash_messages.appointments.closed')
+    if appointment.answer.nil?
+      render :edit, locals: { appointment: }
+    else
+      redirect_to appointment_path(appointment.id), alert: I18n.t('flash_messages.appointments.closed')
+    end
   end
 
   def create
-    @appointment = Appointment.new(appointment_params)
-    if @appointment.save
+    if appointment.save
       redirect_to appointments_path, success: I18n.t('flash_messages.appointments.created')
     else
-      @doctor = Doctor.find(appointment_params[:doctor_id])
       flash.now[:danger] = I18n.t('flash_messages.appointments.not_created')
-      render :new
+      render :new, locals: { appointment:, doctor: }
     end
   end
 
   def update
-    if @appointment.update(appointment_params)
+    if appointment.update(appointment_params)
       redirect_to appointments_path, success: I18n.t('flash_messages.appointments.answer_published')
     else
       flash.now[:danger] = I18n.t('flash_messages.appointments.answer_not_published')
@@ -48,8 +46,14 @@ class AppointmentsController < ApplicationController
 
   private
 
-  def set_appointment
-    @appointment = Appointment.find(params[:id])
+  def appointment
+    @appointment ||= Appointment.find(params[:id])
+  end
+
+  def doctor
+    doctor_id = params[:doctor_id] || appointment_params[:doctor_id]
+
+    User.find(doctor_id)
   end
 
   def appointment_params
@@ -61,7 +65,7 @@ class AppointmentsController < ApplicationController
   end
 
   def patient_has_appointment?
-    Appointment.exists?(patient_id: current_user.id, doctor_id: @doctor.id, answer: nil)
+    Appointment.exists?(patient_id: current_user.id, doctor_id: doctor.id, answer: nil)
   end
 
   def appointments

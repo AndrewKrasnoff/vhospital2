@@ -25,7 +25,7 @@
     </tr>
   </thead>
   <tbody>
-    <%= render @appointments %>
+    <%= render 'appointments/appointment', appointments: %>
   <tbody>
 </table>
-<% flash.now[:info] = I18n.t('flash_messages.appointments.no_appointments') if @appointments.count.zero? %>
+<% flash.now[:info] = I18n.t('flash_messages.appointments.no_appointments') if appointments.count.zero? %>
