@@ -1,4 +1,4 @@
-<h4><%= @category.name %></h4>
+<h4><%= category.name %></h4>
 
 <table class="table">
   <thead>
@@ -10,9 +10,9 @@
     </tr>
   </thead>
   <tbody>
-    <%= render 'doctors/doctor', doctors: @doctors %>
+    <%= render 'doctors/doctor', doctors: %>
   <tbody>
 </table>
 
 <% flash.now[:info] =
-  I18n.t('flash_messages.categories.no_doctors', category_name: @category.name) if @doctors.count.zero? %>
+  I18n.t('flash_messages.categories.no_doctors', category_name: category.name) if doctors.count.zero? %>

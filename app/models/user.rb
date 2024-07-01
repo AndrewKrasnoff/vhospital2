@@ -19,9 +19,9 @@ class User < ApplicationRecord
   enum role: { admin: 0, patient: 1, doctor: 2 }
 
   # == Constants ============================================================
+  MAX_OPEN_APPOINTMENTS = 10
 
   # == Attributes ===========================================================
-  # attribute :role, :string
 
   # == Relationships ========================================================
   with_options dependent: :destroy do
@@ -42,9 +42,9 @@ class User < ApplicationRecord
   # == Class Methods ========================================================
 
   # == Instance Methods =====================================================
-  def available?
-    return true unless doctor?
+  def unavailable?
+    return false unless doctor?
 
-    doctor_appointments.where(answer: nil).count < 10
+    doctor_appointments.opened.count >= MAX_OPEN_APPOINTMENTS
   end
 end

@@ -9,12 +9,12 @@
     <% if current_user.patient? %>
       <td>
         <%= link_to 'New Appoinment',
-                    new_appointment_path(@appointment, doctor_id: doctor.id),
+                    new_appointment_path(doctor_id: doctor.id),
                     class: 'btn btn-primary btn-sm' %>
       </td>
     <% end %>
     <td>
-      <%= doctor.available? ? 'avaliable' : 'unavaliable' %>
+      <%= doctor.unavailable? ? 'unavaliable' : 'avaliable' %>
     </td>
   </tr>
 <% end %>

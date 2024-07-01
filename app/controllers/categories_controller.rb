@@ -1,57 +1,56 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!
   load_and_authorize_resource
-  before_action :set_category, only: %i[show edit update]
 
   def index
-    @categories = Category.all
+    render :index, locals: { categories: }
   end
 
   def show
-    @doctors = User.where(role: :doctor, category_id: @category).order(:email)
+    doctors = User.where(role: :doctor, category:).order(:email)
+    render :show, locals: { doctors:, category: }
   end
 
   def new
-    @category = Category.new
-    @categories = categories
+    category = Category.new
+    render :new, locals: { category: }
   end
 
   def edit
-    @categories = Category.where.not(id: @category.id).order(:name)
+    render :edit, locals: { category: }
   end
 
   def create
-    @category = Category.new(category_params)
-    if @category.save
-      redirect_to categories_path, success: I18n.t('flash_messages.categories.created')
+    category = Category.new(category_params)
+
+    if category.save
+      redirect_to categories_path, flash: { success: I18n.t('flash_messages.categories.created') }
     else
-      @categories = categories
       flash.now[:danger] = I18n.t('flash_messages.categories.not_created')
-      render :new
+      render :new, locals: { category: }
     end
   end
 
   def update
-    if @category.update(category_params)
-      redirect_to categories_path, success: I18n.t('flash_messages.categories.updated')
+    if category.update(category_params)
+      redirect_to categories_path, flash: { success: I18n.t('flash_messages.categories.updated') }
     else
-      @categories = Category.where.not(id: @category.id).order(:name)
       flash.now[:danger] = I18n.t('flash_messages.categories.not_updated')
-      render :edit
+      render :edit, locals: { category: }
     end
   end
 
   private
 
-  def set_category
-    @category = Category.find(params[:id])
+  def category
+    @category ||= Category.find(params[:id])
   end
 
   def category_params
-    params.require(:category).permit(:name, :parent_id)
+    params.require(:category).permit(:name)
   end
 
   def categories
-    Category.order(:name)
+    Category.order_by_name
   end
 end

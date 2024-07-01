@@ -21,6 +21,7 @@ class Category < ApplicationRecord
   validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   # == Scopes ===============================================================
+  scope :order_by_name, -> { order(:name) }
 
   # == Callbacks ============================================================
 

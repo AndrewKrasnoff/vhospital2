@@ -72,20 +72,20 @@ RSpec.describe User do
   end
 
   describe 'instance methods' do
-    describe '#available?' do
+    describe '#unavailable?' do
       context 'when user role is "Admin"' do
         let!(:user) { build(:user, role: :admin) }
 
-        it 'returns TRUE' do
-          expect(user.available?).to be true
+        it 'returns FALSE' do
+          expect(user.unavailable?).to be false
         end
       end
 
       context 'when user role is "Patient"' do
         let!(:user) { build(:user, role: :patient) }
 
-        it 'returns TRUE' do
-          expect(user.available?).to be true
+        it 'returns FALSE' do
+          expect(user.unavailable?).to be false
         end
       end
 
@@ -99,8 +99,8 @@ RSpec.describe User do
             create_list(:appointment, 4, :with_answer, doctor:)
           end
 
-          it 'returns FALSE' do
-            expect(doctor.available?).to be false
+          it 'returns TRUE' do
+            expect(doctor.unavailable?).to be true
           end
         end
 
@@ -112,8 +112,8 @@ RSpec.describe User do
             create_list(:appointment, 4, :with_answer, doctor:)
           end
 
-          it 'returns FALSE' do
-            expect(doctor.available?).to be false
+          it 'returns TRUE' do
+            expect(doctor.unavailable?).to be true
           end
         end
 
@@ -125,8 +125,8 @@ RSpec.describe User do
             create_list(:appointment, 4, :with_answer, doctor:)
           end
 
-          it 'returns TRUE' do
-            expect(doctor.available?).to be true
+          it 'returns FALSE' do
+            expect(doctor.unavailable?).to be false
           end
         end
       end

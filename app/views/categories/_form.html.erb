@@ -1,22 +1,22 @@
 <div class="text-start">
-  <% if @category.errors.any? %>
+  <% if category.errors.any? %>
     <div class="alert alert-danger" role="alert">
       <ul>
-        <% @category.errors.full_messages.each do |error| %>
+        <% category.errors.full_messages.each do |error| %>
           <li><small><%= error %></li></small>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <%= form_for @category do |form| %>
+  <%= form_for category do |form| %>
     <div class="mb-3">
       <%= form.label :name, class: 'form-label' %>
       <%= form.text_field :name, class: 'form-control form-control-sm' %>
     </div>
 
     <div>
-      <%= form.submit action: @category.new_record? ? 'Create' : 'Save', class: 'btn btn-primary btn-sm' %>
+      <%= form.submit action: category.new_record? ? 'Create' : 'Save', class: 'btn btn-primary btn-sm' %>
       <%= link_to 'Back', :back, class: 'btn btn-outline-secondary btn-sm' %>
     </div>
   <% end %>

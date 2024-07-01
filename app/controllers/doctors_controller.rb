@@ -12,7 +12,7 @@ class DoctorsController < ApplicationController
 
   def update
     if doctor.update(doctor_params)
-      redirect_to doctors_path, success: I18n.t('flash_messages.categories.updated')
+      redirect_to doctors_path, flash: { success: I18n.t('flash_messages.categories.updated') }
     else
       flash.now[:danger] = I18n.t('flash_messages.categories.not_updated')
       render :edit, locals: { doctor: }
