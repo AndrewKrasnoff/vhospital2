@@ -32,7 +32,7 @@ puts
                     patient: User.where(role: :patient).sample)
 end
 
-puts '✅ | Open (without answer) appointments ceated'
+puts '✅ | Open (without answer) appointments created'
 puts '🔥 | -'
 puts
 
@@ -42,6 +42,6 @@ puts
                     patient: User.where(role: :patient).sample)
 end
 
-puts '✅ | Closed (with answer) appointments ceated'
+puts '✅ | Closed (with answer) appointments created'
 puts '🔥 | -'
 puts

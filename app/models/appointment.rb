@@ -28,6 +28,7 @@ class Appointment < ApplicationRecord
   validates :answer,   presence: true, if: :should_validate?
 
   # == Scopes ===============================================================
+  scope :opened, -> { where(answer: nil) }
 
   # == Callbacks ============================================================
 
