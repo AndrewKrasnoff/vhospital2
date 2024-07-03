@@ -11,6 +11,7 @@
 #  updated_at :datetime         not null
 #
 class Appointment < ApplicationRecord
+
   # == Extensions ===========================================================
 
   # == Constants ============================================================
@@ -44,4 +45,5 @@ class Appointment < ApplicationRecord
   def should_validate?
     !new_record?
   end
+
 end

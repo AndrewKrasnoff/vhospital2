@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -54,6 +55,7 @@ class CategoriesController < ApplicationController
   end
 
   def doctors
-    Doctor.order_by_email
+    Doctor.order_by_email.where(category:)
   end
+
 end

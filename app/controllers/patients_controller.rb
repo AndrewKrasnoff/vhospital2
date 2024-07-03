@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -11,4 +12,5 @@ class PatientsController < ApplicationController
   def patients
     Patient.order_by_email
   end
+
 end
