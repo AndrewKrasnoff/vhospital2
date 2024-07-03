@@ -4,7 +4,7 @@ class PatientNotificationMailer < ApplicationMailer
     @appointment = appointment
     @recipient   = appointment.patient.email
 
-    mail(to: @recipient, subject: I18n.t('emial.subjects.new_appoinment'))
+    mail(to: @recipient, subject: I18n.t('emial.subjects.appoinment_answer'))
   end
 
 end

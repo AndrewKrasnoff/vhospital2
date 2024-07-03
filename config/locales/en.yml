@@ -1,12 +1,12 @@
 en:
   flash_messages:
     appointments:
-      created: 'Appointment was created successfuly'
+      created: 'Appointment was created successfuly. Notification was sent to doctor via email.'
       not_created: 'Appointment was not created'
       closed: 'This Appointment is CLOSED!'
       assigned: 'You already have pending appointment with this doctor'
       has_ten: 'Doctor already has 10 pending appointments. New appointment is unavaliable'
-      answer_published: 'The Answer was puplished succesfuly'
+      answer_published: 'The Answer was puplished succesfuly. Notification was sent to petient via email.'
       answer_not_published: 'The Answer was NOT puplished'
       no_appointments: "You don't have any appointment yet"
       no_answer: 'THERE IS NO ANSWER FROM DOCTOR YET'
@@ -26,3 +26,4 @@ en:
   emial:
     subjects:
       new_appoinment: 'New appointment created by patient'
+      appoinment_answer: 'You have recieved an answer to you question'
