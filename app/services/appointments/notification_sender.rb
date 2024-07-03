@@ -17,11 +17,11 @@ module Appointments
     attr_reader :appointment, :user
 
     def send_notification_to_patient
-      # sends email to patient
+      PatientNotificationMailer.email(appointment).deliver_later
     end
 
     def send_notification_to_doctor
-      DoctorNotificationMailer.email(appointment).deliver_now
+      DoctorNotificationMailer.email(appointment).deliver_later
     end
 
   end

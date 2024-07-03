@@ -11,6 +11,7 @@ gem 'factory_bot_rails', '~> 6.4', '>= 6.4.3'
 gem 'faker', '~> 3.4', '>= 3.4.1'
 gem 'importmap-rails'
 gem 'jbuilder'
+gem 'letter_opener_web', '~> 3.0'
 gem 'pg', '~> 1.5', '>= 1.5.6'
 gem 'puma', '>= 5.0'
 gem 'rails', '~> 7.1.3', '>= 7.1.3.4'
@@ -32,7 +33,6 @@ group :development, :test do
 end
 
 group :development do
-  gem 'letter_opener_web', '~> 3.0'
   gem 'web-console', '~> 4.2', '>= 4.2.1'
 end
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe DoctorNotificationMailer do
+RSpec.describe PatientNotificationMailer do
   subject(:mail) { described_class.email(appointment) }
 
   let!(:doctor) { create(:doctor) }
@@ -9,12 +9,12 @@ RSpec.describe DoctorNotificationMailer do
 
   describe '#email' do
     describe 'metadata' do
-      it 'sends email to the doctor' do
-        expect(mail.to).to eq([doctor.email])
+      it 'sends email to the patient' do
+        expect(mail.to).to eq([patient.email])
       end
 
       it "has recipient's name" do
-        expect(mail.body).to include(patient.email)
+        expect(mail.body).to include(doctor.email)
       end
 
       it 'has a link to site' do
