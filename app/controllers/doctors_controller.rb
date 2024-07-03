@@ -1,4 +1,5 @@
 class DoctorsController < ApplicationController
+
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -32,4 +33,5 @@ class DoctorsController < ApplicationController
   def doctor_params
     params.require(:doctor).permit(:category_id)
   end
+
 end

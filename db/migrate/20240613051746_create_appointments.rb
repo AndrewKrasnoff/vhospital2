@@ -1,4 +1,5 @@
 class CreateAppointments < ActiveRecord::Migration[7.1]
+
   def change
     create_table :appointments, id: :uuid do |t|
       t.references :doctor,  type: :uuid, null: false, foreign_key: { to_table: 'users' }
@@ -9,4 +10,5 @@ class CreateAppointments < ActiveRecord::Migration[7.1]
       t.timestamps
     end
   end
+
 end

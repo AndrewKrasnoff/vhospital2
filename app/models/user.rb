@@ -13,6 +13,7 @@
 #  updated_at          :datetime         not null
 #
 class User < ApplicationRecord
+
   # == Extensions ===========================================================
   devise :database_authenticatable, :registerable, :rememberable, :validatable
 
@@ -39,4 +40,5 @@ class User < ApplicationRecord
       type == user_type
     end
   end
+
 end

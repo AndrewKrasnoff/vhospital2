@@ -7,7 +7,9 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module Vhospital2
+
   class Application < Rails::Application
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.1
 
@@ -28,5 +30,7 @@ module Vhospital2
       generate.test_framework :rspec
       generate.orm :active_record, primary_key_type: :uuid
     end
+
   end
+
 end

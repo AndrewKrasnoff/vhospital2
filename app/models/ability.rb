@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Ability
+
   include CanCan::Ability
 
   def initialize(user)
@@ -27,4 +28,5 @@ class Ability
   def doctor_access
     can %i[index show update], Appointment
   end
+
 end

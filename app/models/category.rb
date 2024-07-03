@@ -8,6 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Category < ApplicationRecord
+
   # == Extensions ===========================================================
 
   # == Constants ============================================================
@@ -28,4 +29,5 @@ class Category < ApplicationRecord
   # == Class Methods ========================================================
 
   # == Instance Methods =====================================================
+
 end

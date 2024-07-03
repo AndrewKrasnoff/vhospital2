@@ -13,7 +13,7 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 
 | Name             | Technologies                                                                                           |
 |------------------|--------------------------------------------------------------------------------------------------------|
-| Backend          | Ruby 3.2.2<br/>Rails 7.1                                                                               |
+| Backend          | Ruby 3.2.2<br/>Rails 7.1.3.4                                                                           |
 | Frontend         | CSS, SCSS<br/>HTML, ERB<br/>Bootstrap                                                                  |
 | Database         | PostgreSQL                                                                                             |
 | Server           | Puma                                                                                                   |
@@ -54,7 +54,6 @@ Authentication and authorization requirements:
 - use gem devise for authentication;
 - use gem cancancan for authorization
 - all users can log in using their phone number and password;
-
 
 Categories requirements:
 - validation by a unique name;

@@ -13,6 +13,7 @@
 #  updated_at          :datetime         not null
 #
 class Doctor < User
+
   # == Extensions ===========================================================
 
   # == Constants ============================================================
@@ -37,4 +38,5 @@ class Doctor < User
   def unavailable?
     appointments.opened.count >= MAX_OPENED_APPOINTMENTS
   end
+
 end

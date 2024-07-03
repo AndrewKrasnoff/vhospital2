@@ -1,4 +1,5 @@
 class AppointmentsController < ApplicationController
+
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -30,6 +31,7 @@ class AppointmentsController < ApplicationController
 
   def create
     if appointment.save
+      Appointments::NotificationSender.call(appointment, current_user)
       redirect_to appointments_path, flash: { success: I18n.t('flash_messages.appointments.created') }
     else
       flash.now[:danger] = I18n.t('flash_messages.appointments.not_created')
@@ -39,6 +41,7 @@ class AppointmentsController < ApplicationController
 
   def update
     if appointment.update(appointment_params)
+      Appointments::NotificationSender.call(appointment, current_user)
       redirect_to appointments_path, flash: { success: I18n.t('flash_messages.appointments.answer_published') }
     else
       flash.now[:danger] = I18n.t('flash_messages.appointments.answer_not_published')
@@ -75,4 +78,5 @@ class AppointmentsController < ApplicationController
 
     current_user.appointments
   end
+
 end
