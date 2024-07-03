@@ -1,0 +1,3 @@
+<h1>Hello, <%= @appointment.doctor.email %>!</h1>
+<p>New appointment #<%= @appointment.short_id %> was crated by patient <%= @appointment.patient.email %>.
+<p>Please visit <a href="<%= ENV.fetch('APP_URL', 'http://localhost:3000/') %>">our site</a> to see the question and answer it</p>

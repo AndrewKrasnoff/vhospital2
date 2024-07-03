@@ -31,7 +31,7 @@ class AppointmentsController < ApplicationController
 
   def create
     if appointment.save
-      Appointments::NotificationSender.new(appointment, current_user).call
+      Appointments::NotificationSender.call(appointment, current_user)
       redirect_to appointments_path, flash: { success: I18n.t('flash_messages.appointments.created') }
     else
       flash.now[:danger] = I18n.t('flash_messages.appointments.not_created')

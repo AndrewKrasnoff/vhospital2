@@ -32,6 +32,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener_web', '~> 3.0'
   gem 'web-console', '~> 4.2', '>= 4.2.1'
 end
 

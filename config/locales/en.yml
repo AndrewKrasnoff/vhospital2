@@ -22,3 +22,7 @@ en:
   time:
     formats:
       datetime: '%e.%m.%y at %H:%M'
+
+  emial:
+    subjects:
+      new_appoinment: 'New appointment created by patient'

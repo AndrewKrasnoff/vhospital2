@@ -1,6 +1,6 @@
 module Appointments
 
-  class NotificationSender < ApplicationSevice
+  class NotificationSender < ApplicationService
 
     def initialize(appointment, user)
       @appointment = appointment
@@ -21,7 +21,7 @@ module Appointments
     end
 
     def send_notification_to_doctor
-      # send email to user
+      DoctorNotificationMailer.email(appointment).deliver_now
     end
 
   end

@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :patients, only: :index
   resources :categories, except: :destroy
   resources :appointments
+
+  mount LetterOpenerWeb::Engine, at: '/letter_opener'
 end
