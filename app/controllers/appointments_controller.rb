@@ -55,7 +55,7 @@ class AppointmentsController < ApplicationController
   def doctor
     doctor_id = params[:doctor_id] || appointment_params[:doctor_id]
 
-    User.find(doctor_id)
+    Doctor.find(doctor_id)
   end
 
   def appointment_params
@@ -73,7 +73,6 @@ class AppointmentsController < ApplicationController
   def appointments
     return if current_user.admin?
 
-    method_name = "#{current_user.role}_appointments"
-    current_user.send(method_name)
+    current_user.appointments
   end
 end

@@ -7,7 +7,6 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    doctors = User.where(role: :doctor, category:).order(:email)
     render :show, locals: { doctors:, category: }
   end
 
@@ -52,5 +51,9 @@ class CategoriesController < ApplicationController
 
   def categories
     Category.order_by_name
+  end
+
+  def doctors
+    Doctor.order_by_email
   end
 end

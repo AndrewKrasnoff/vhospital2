@@ -16,8 +16,8 @@ FactoryBot.define do
       answer { Faker::Lorem.sentence }
     end
 
-    doctor   { association :user, role: :doctor }
-    patient  { association :user, role: :patient }
+    doctor   { association :doctor }
+    patient  { association :patient }
     question { Faker::Lorem.sentence }
 
     trait :with_answer do

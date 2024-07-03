@@ -37,7 +37,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_051746) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "remember_created_at"
-    t.integer "role"
+    t.string "type"
     t.string "phone", limit: 10
     t.uuid "category_id"
     t.datetime "created_at", null: false
