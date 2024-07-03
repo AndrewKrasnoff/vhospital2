@@ -9,7 +9,7 @@
         <div class="mb-3">
           <%= form.label :select_new_category, class: 'form-label' %>
           <%= form.collection_select(:category_id,
-                                     Category.where.not(id: doctor.category&.id).order(:name),
+                                     Category.order_by_name.where.not(id: doctor.category&.id),
                                      :id,
                                      :name,
                                      {},

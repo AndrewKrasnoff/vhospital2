@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :authenticate_user!
-  authorize_resource class: false
+  load_and_authorize_resource
 
   def index
     render :index, locals: { doctors: }
@@ -22,14 +22,14 @@ class DoctorsController < ApplicationController
   private
 
   def doctor
-    @doctor = User.find(params[:id])
+    @doctor = Doctor.find(params[:id])
   end
 
   def doctors
-    User.where(role: :doctor).includes(:category).order('categories.name', :email)
+    Doctor.includes(:category).order('categories.name', :email)
   end
 
   def doctor_params
-    params.require(:user).permit(:category_id)
+    params.require(:doctor).permit(:category_id)
   end
 end

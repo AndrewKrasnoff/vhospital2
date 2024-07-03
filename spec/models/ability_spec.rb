@@ -13,15 +13,15 @@ RSpec.describe Ability do
   end
 
   context 'when user is Admin' do
-    let(:user)  { create(:user, role: :admin) }
+    let(:user) { create(:admin) }
 
     it { is_expected.to be_able_to(:manage, Category) }
     it { is_expected.not_to be_able_to(:manage, Appointment) }
 
-    it { is_expected.to be_able_to(:index, :doctor) }
-    it { is_expected.to be_able_to(:show, :doctor) }
-    it { is_expected.to be_able_to(:update, :doctor) }
-    it { is_expected.not_to be_able_to(:new, :doctor) }
-    it { is_expected.not_to be_able_to(:create, :doctor) }
+    it { is_expected.to be_able_to(:index, Doctor) }
+    it { is_expected.to be_able_to(:show, Doctor) }
+    it { is_expected.to be_able_to(:update, Doctor) }
+    it { is_expected.not_to be_able_to(:new, Doctor) }
+    it { is_expected.not_to be_able_to(:create, Doctor) }
   end
 end

@@ -15,8 +15,8 @@ class Ability
 
   def admin_access
     can :manage, Category
-    can %i[index show update], :doctor
-    can :read, :patient
+    can %i[index show update], Doctor
+    can :read, Patient
   end
 
   def patient_access

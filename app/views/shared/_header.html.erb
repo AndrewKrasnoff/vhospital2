@@ -57,7 +57,7 @@
 </nav>
 <% if user_signed_in? %>
   <div class="alert alert-secondary mt-1" role="alert">
-    <b>User:</b>&nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.role %>
+    <b>User:</b>&nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.type %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.email %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= current_user.phone %>
   </div>
