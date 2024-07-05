@@ -24,13 +24,13 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 
 ### Credentials
 
-| User type       | Login                                       | Password            |
-|-----------------|---------------------------------------------|---------------------|
-| Admin           | 1234567890                                  | password            |
-|                 |                                             |                     |
-| Patients        | See list of patients<br/>when login as admin| password<br/>for all|
-|                 |                                             |                     |
-| Doctors         | See list of doctors<br/>when login as admin | password<br/>for all|
+| User type       | Login                                       | Password                   |
+|-----------------|---------------------------------------------|----------------------------|
+| Admin           | 1234567890                                  | <b>password</b>            |
+|                 |                                             |                            |
+| Patients        | See list of patients<br/>when login as admin| <b>password</b><br/>for all|
+|                 |                                             |                            |
+| Doctors         | See list of doctors<br/>when login as admin | <b>password</b><br/>for all|
 
 ### Getting Started
 
@@ -49,6 +49,13 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
     docker compose exec backend bundle exec rails db:seed
     ```
 
+### Links
+
+| Name              | Link                                |
+|-------------------|-------------------------------------|
+| vhospital2        | http://localhost:3000               |
+| Show Emails       | http://localhost:3000/letter_opener |
+| Preview Emails    | http://localhost:3000/rails/mailers |
 
 ### Task description
 
