@@ -24,6 +24,7 @@ group :development, :test do
   gem 'annotate', '~> 3.2'
   gem 'debug', platforms: %i[mri windows]
   gem 'erb_lint', '~> 0.5.0'
+  gem 'listen', '~> 3.9'
   gem 'rspec-rails', '~> 6.1', '>= 6.1.2'
   gem 'rubocop', '~> 1.64', '>= 1.64.1', require: false
   gem 'rubocop-factory_bot', '~> 2.26',  require: false

@@ -32,6 +32,23 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 |                 |                                             |                     |
 | Doctors         | See list of doctors<br/>when login as admin | password<br/>for all|
 
+### Getting Started
+
+1. **Clone the project.**
+    ```bash
+    git clone git@github.com:AndrewKrasnoff/vhospital2.git
+    ```
+
+3. **Build application.**
+    ```bash
+    docker compose up --build
+    ```
+
+3. **Run seeds.**
+    ```bash
+    docker compose exec backend bundle exec rails db:seed
+    ```
+
 
 ### Task description
 
@@ -63,4 +80,44 @@ Assignments requirements:
 - a doctor can have only 10 open (not answered) assignments at a time;
 - a patient can have only 1 (not answered) assignment with the same doctor;
 - the assignment is closed (not deleted) when the doctor writes an answer to the patent;
+
+### Commands
+
+`yarn exec <command>` - execute command inside backend container
+
+`yarn status` - show status of running containers
+
+`yarn build` - build project
+
+`yarn up` - start development environment (you can use `-d` option for silence mode)
+
+`yarn stop` - stop containers
+
+`yarn down` - down containers
+
+`yarn bash` - go inside the backend container to execute commands
+
+`yarn c` - run Ruby console inside the backend container
+
+`yarn routes` - show all routes (you can find all matches `yarn routes | grep <resource_name>`)
+
+`yarn db:seed` - run seeds
+
+`yarn db:replant` - truncate DB and run seeds
+
+`yarn db:migrate` - run migrations
+
+`yarn db:rollback` - run migration rollback
+
+`yarn db:reset` - run reset the database (drop, create, migrate, seed)
+
+`yarn rubocop` - run Rubocop (you can use `-a` option to fix some issues)
+
+`yarn erblint` - run ERBLint (you can use `-a` option to fix some issues)
+
+`yarn rspec` - run RSpec in parallel mode
+
+`yarn linters` - run linters and tests (rubocop, erblint, rspec)
+
+`yarn annotate` - run Annotate models
 
