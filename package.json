@@ -1,0 +1,25 @@
+{
+  "name": "vhospital2",
+  "private": true,
+  "scripts": {
+    "exec":        "docker compose exec backend",
+    "status":      "docker compose ps",
+    "build":       "docker compose up --build",
+    "up":          "docker compose up",
+    "stop":        "docker compose stop",
+    "down":        "docker compose down",
+    "bash":        "docker compose exec backend bash",
+    "c":           "docker compose exec backend bundle exec rails c",
+    "routes":      "docker compose exec backend bundle exec rails routes",
+    "db:seed":     "docker compose exec backend bundle exec rails db:seed",
+    "db:replant":  "docker compose exec backend bundle exec rails db:seed:replant",
+    "db:migrate":  "docker compose exec backend bundle exec rails db:migrate",
+    "db:rollback": "docker compose exec backend bundle exec rails db:rollback",
+    "db:reset":    "docker compose exec backend bundle exec rails db:reset",
+    "rubocop":     "docker compose exec -e RAILS_ENV=test backend bundle exec rubocop",
+    "erblint":     "docker compose exec -e RAILS_ENV=test backend bundle exec erblint --lint-all",
+    "rspec":       "docker compose exec -e RAILS_ENV=test backend bundle exec rspec",
+    "linters":     "yarn rubocop && yarn erblint && yarn rspec",
+    "annotate":    "docker compose exec backend bundle exec annotate --models"
+  }
+}
