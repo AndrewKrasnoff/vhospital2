@@ -34,19 +34,27 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 
 ### Getting Started
 
-1. **Clone the project.**
+1. **Clone the project**
     ```bash
     git clone https://github.com/AndrewKrasnoff/vhospital2.git
     ```
 
-3. **Build application.**
+3. **Build application**
     ```bash
     docker compose up --build
     ```
+    or
+    ```bash
+    yarn build
+    ```
 
-3. **Run seeds.**
+3. **Run seeds**
     ```bash
     docker compose exec backend bundle exec rails db:seed
+    ```
+    or
+    ```bash
+    yarn db:seed
     ```
 
 ### Links
