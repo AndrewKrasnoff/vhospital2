@@ -84,17 +84,19 @@ The doctor is assigned to one of the categories.
 
 Authentication and authorization requirements:
 - use gem devise for authentication;
-- use gem cancancan for authorization
-- all users can log in using their phone number and password;
+- use gem cancancan for authorization;
+- all users can log in using their phone number and password.
 
 Categories requirements:
 - validation by a unique name;
 - can be assigned to several doctors;
 
-Assignments requirements:
+Appointemts requirements:
 - a doctor can have only 10 open (not answered) assignments at a time;
 - a patient can have only 1 (not answered) assignment with the same doctor;
 - the assignment is closed (not deleted) when the doctor writes an answer to the patent;
+- when patient creates appointment, notification is sent to doctor via email ;
+- when doctor answers question in appointment, patient recieves notificatiom via email.
 
 ### Commands
 
