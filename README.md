@@ -69,10 +69,10 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 
 To create an application to manage the hospital
 
-Users' types:
-- patient (User)
-- doctor (Doctor)
-- admin (Admin)
+User's types:
+- patient
+- doctor
+- admin
 
 Each type of user should have such functionality:
 
