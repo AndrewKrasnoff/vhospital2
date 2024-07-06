@@ -36,7 +36,7 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 
 1. **Clone the project.**
     ```bash
-    git clone git@github.com:AndrewKrasnoff/vhospital2.git
+    git clone https://github.com/AndrewKrasnoff/vhospital2.git
     ```
 
 3. **Build application.**
