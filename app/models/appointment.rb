@@ -7,12 +7,14 @@
 #  patient_id :uuid             not null
 #  question   :text
 #  answer     :text
+#  priority   :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 class Appointment < ApplicationRecord
 
   # == Extensions ===========================================================
+  enum priority: { normal: 0, medium: 1, high: 2 }
 
   # == Constants ============================================================
   PENDING = 'PENDING'.freeze

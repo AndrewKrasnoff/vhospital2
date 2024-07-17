@@ -7,6 +7,7 @@
 #  patient_id :uuid             not null
 #  question   :text
 #  answer     :text
+#  priority   :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -16,6 +17,10 @@ RSpec.describe Appointment do
   describe 'constants' do
     it { expect(Appointment::PENDING).to eq('PENDING') }
     it { expect(Appointment::CLOSED).to eq('CLOSED') }
+  end
+
+  describe 'enums' do
+    it { is_expected.to define_enum_for(:priority).with_values(normal: 0, medium: 1, high: 2) }
   end
 
   describe 'associations' do

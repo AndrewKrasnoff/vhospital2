@@ -7,6 +7,7 @@
 #  patient_id :uuid             not null
 #  question   :text
 #  answer     :text
+#  priority   :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
@@ -19,6 +20,7 @@ FactoryBot.define do
     doctor   { association :doctor }
     patient  { association :patient }
     question { Faker::Lorem.sentence }
+    priority { Appointment.priorities.values.sample }
 
     trait :with_answer do
       after :create do |appointment, evaluator|

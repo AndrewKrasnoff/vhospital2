@@ -39,7 +39,8 @@ puts
 30.times do
   FactoryBot.create(:appointment, :with_answer,
                     doctor: Doctor.all.sample,
-                    patient: Patient.all.sample)
+                    patient: Patient.all.sample,
+                    priority: Appointment.priorities.values.sample)
 end
 
 puts '✅ | Closed (with answer) appointments created'

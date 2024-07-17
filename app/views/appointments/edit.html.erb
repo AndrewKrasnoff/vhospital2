@@ -7,6 +7,12 @@
     <div class="text-start">
       <%= form_for appointment do |form| %>
       <b>Patient: </b><%= appointment.patient.email %>
+
+      <div class="text-start mt-4 d-flex flex-row align-items-center">
+        <div col=3>Appointment priority</div>
+        <div class="col-1 mx-3 priority-<%= appointment.priority %>"></div>
+      </div>
+
       <div class="row justify-content-evenly mt-4">
         <div class="col-6">
           <div class="mb-3 fw-bold">Question:</div>

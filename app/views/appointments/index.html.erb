@@ -3,25 +3,15 @@
 
   <thead>
     <tr>
-      <% if current_user.patient? %>
-        <th>#</th>
-        <th>Doctor</th>
-        <th>Phone</th>
-        <th>Specialization</th>
-        <th>Created At</th>
-        <th>Closed At</th>
-        <th>Status</th>
-        <th></th>
-      <% end %>
-      <% if current_user.doctor? %>
-        <th>#</th>
-        <th>Patient</th>
-        <th>Phone</th>
-        <th>Created At</th>
-        <th>Closed At</th>
-        <th>Status</th>
-        <th></th>
-      <% end %>
+      <th>#</th>
+      <th><%= current_user.patient? ? 'Doctor' : 'Patgient' %></th>
+      <th>Phone</th>
+      <% if current_user.patient? %><th>Specialization</th><% end %>
+      <th>Created At</th>
+      <th>Closed At</th>
+      <th>Status</th>
+      <th>Priority</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>

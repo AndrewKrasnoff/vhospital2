@@ -13,6 +13,7 @@
     <td><%= I18n.l(appointment.created_at, format: :datetime) %></td>
     <td><%= I18n.l(appointment.updated_at, format: :datetime ) if appointment.answer.present? %></td>
     <td><%= appointment.answer ? Appointment::CLOSED : Appointment::PENDING %></td>
+    <td><div class="priority-<%= appointment.priority %>"></div></td>
     <td>
       <%= link_to 'View', appointment_path(appointment), class: 'btn btn-primary btn-sm' %>
       <% if current_user.doctor? && !appointment.answer %>
