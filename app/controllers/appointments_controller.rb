@@ -63,7 +63,7 @@ class AppointmentsController < ApplicationController
 
   def appointment_params
     if action_name == 'new' || action_name == 'create'
-      params.require(:appointment).permit(:patient_id, :doctor_id, :question)
+      params.require(:appointment).permit(:patient_id, :doctor_id, :question, :priority)
     else
       params.require(:appointment).permit(:answer)
     end

@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-4 text-center">
+  <div class="col-6 text-center">
     <h4>New Appointment</h4>
 
     <%= render 'appointments/errors', appointment: %>
@@ -11,6 +11,14 @@
 
     <% if current_user.patient? %>
       <%= form_for appointment do |form| %>
+        <div class="text-start mb-3 d-flex flex-row align-items-center">
+          <%= form.label :priority, 'Select prioroty', class: 'form-label m-0' %>
+          <div class="col-4 mx-3">
+            <%= form.select(:priority, Appointment.priorities.keys, {}, { class: 'form-select' }) %>
+          </div>
+          <div class="col-2 priority-<%= appointment.priority %>"></div>
+        </div>
+
         <div class="mb-3">
           <%= form.label :question, 'Your question', class: 'form-label' %>
           <%= form.text_area :question, class: 'form-control form-control-sm', style: 'min-height: 10em' %>

@@ -20,6 +20,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_051746) do
     t.uuid "patient_id", null: false
     t.text "question"
     t.text "answer"
+    t.integer "priority", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["doctor_id"], name: "index_appointments_on_doctor_id"

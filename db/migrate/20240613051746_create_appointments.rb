@@ -6,6 +6,7 @@ class CreateAppointments < ActiveRecord::Migration[7.1]
       t.references :patient, type: :uuid, null: false, foreign_key: { to_table: 'users' }
       t.text       :question
       t.text       :answer
+      t.integer    :priority, default: 0, null: false
 
       t.timestamps
     end

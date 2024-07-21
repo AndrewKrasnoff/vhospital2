@@ -24,3 +24,38 @@
 ul {
   margin-bottom: 0em;
 }
+
+.priority {
+  &-normal, &-medium, &-high {
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    padding: 4px;
+    text-align: center;
+  }
+
+  &-normal {
+    border: 1px solid green;
+    background-color: green;
+    &:after {
+      content: "normal";
+    }
+  }
+
+  &-medium {
+    border: 1px solid goldenrod;
+    background-color: goldenrod;
+    &:after {
+      content: "medium";
+    }
+  }
+
+  &-high {
+    border: 1px solid red;
+    background-color: red;
+    &:after {
+      content: "high";
+    }
+  }
+}
