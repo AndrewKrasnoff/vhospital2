@@ -14,7 +14,7 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 | Name             | Technologies                                                                                           |
 |------------------|--------------------------------------------------------------------------------------------------------|
 | Backend          | Ruby 3.2.2<br/>Rails 7.1.3.4                                                                           |
-| Frontend         | CSS, SCSS<br/>HTML, ERB<br/>Bootstrap                                                                  |
+| Frontend         | JavaScript, CSS, SCSS<br/>HTML, ERB<br/>Bootstrap                                                      |
 | Database         | PostgreSQL                                                                                             |
 | Server           | Puma                                                                                                   |
 | Testing Tools    | RSpec<br/>Shoulda Matchers<br/>FactoryBot<br/>Faker                                                    |

@@ -19,10 +19,8 @@ services:
     volumes:
       - .:/rails:rw
       - /rails/tmp/cache/bootsnap
-      - /rails/node_modules
     ports:
       - "3000:3000/tcp"
-
     depends_on:
       - postgres
 

@@ -10,13 +10,16 @@
     </div>
 
     <% if current_user.patient? %>
-      <%= form_for appointment do |form| %>
-        <div class="text-start mb-3 d-flex flex-row align-items-center">
+      <%= form_for appointment, data: { turbo: false } do |form| %>
+        <div class="text-start mb-3 d-flex flex-row align-items-center" data-controller="priority">
           <%= form.label :priority, 'Select prioroty', class: 'form-label m-0' %>
           <div class="col-4 mx-3">
-            <%= form.select(:priority, Appointment.priorities.keys, {}, { class: 'form-select' }) %>
+            <%= form.select :priority, Appointment.priorities.keys, {},
+                                       { data: { 'priority-target': 'currentPriority',
+                                                 action: 'change->priority#changePriorityLabel' },
+                                         class: 'form-select' } %>
           </div>
-          <div class="col-2 priority-<%= appointment.priority %>"></div>
+          <div class="col-2 priority-<%= appointment.priority %>" data-priority-target="priorityLabel"></div>
         </div>
 
         <div class="mb-3">
