@@ -19,6 +19,7 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 | Server           | Puma                                                                                                   |
 | Testing Tools    | RSpec<br/>Shoulda Matchers<br/>FactoryBot<br/>Faker                                                    |
 | Linters          | Rubocop<br/>ERBLint                                                                                    |
+| Background Jobs  | Sidekiq<br/>Redis<br/>                                                                                 |
 | Authorization    | Cancancan                                                                                              |
 | Authentication   | Devise                                                                                                 |
 
@@ -31,6 +32,8 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 | Patients        | See list of patients<br/>when login as admin| <b>password</b><br/>for all|
 |                 |                                             |                            |
 | Doctors         | See list of doctors<br/>when login as admin | <b>password</b><br/>for all|
+|                 |                                             |                            |
+| Sidekiq         | empty                                       | empty                      |
 
 ### Getting Started
 
@@ -62,6 +65,7 @@ Please wait about 60 seconds when you follow the link to let the application 'aw
 | Name              | Link                                |
 |-------------------|-------------------------------------|
 | vhospital2        | http://localhost:3000               |
+| Sidekiq Dashboard | http://localhost:3000/sidekiq_/     |
 | Show Emails       | http://localhost:3000/letter_opener |
 | Preview Emails    | http://localhost:3000/rails/mailers |
 

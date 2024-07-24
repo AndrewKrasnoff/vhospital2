@@ -15,15 +15,15 @@ ENV RAILS_ENV="production" \
 
 # Install packages needed to install nodejs
 RUN apt-get update -qq && \
-apt-get install --no-install-recommends -y curl && \
-rm -rf /var/lib/apt/lists /var/cache/apt/archives
+    apt-get install --no-install-recommends -y curl && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install Node.js
 ARG NODE_VERSION=14.16.1
 ENV PATH=/usr/local/node/bin:$PATH
 RUN curl -sL https://github.com/nodenv/node-build/archive/master.tar.gz | tar xz -C /tmp/ && \
-/tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
-rm -rf /tmp/node-build-master
+    /tmp/node-build-master/bin/node-build "${NODE_VERSION}" /usr/local/node && \
+    rm -rf /tmp/node-build-master
 
 # Throw-away build stage to reduce size of final image
 FROM base AS build

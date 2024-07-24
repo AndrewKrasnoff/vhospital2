@@ -7,23 +7,12 @@ x-backend-app: &backend-app
     DB_PASSWORD: postgres
     DB_PORT: 5432
     DB_HOST: postgres
+    REDIS_URL: redis://redis:6379/0
     EDITOR: 'nano'
   stdin_open: true
   tty: true
 
 services:
-  backend:
-    <<: *backend-app
-    entrypoint: ./docker-entrypoint-dev.sh
-    command: bundle exec rails server -b 0.0.0.0
-    volumes:
-      - .:/rails:rw
-      - /rails/tmp/cache/bootsnap
-    ports:
-      - "3000:3000/tcp"
-    depends_on:
-      - postgres
-
   postgres:
     image: postgres:11.16-bullseye
     environment:
@@ -33,4 +22,35 @@ services:
       - 5432
     volumes:
       - /var/lib/postgresql/data
+
+  redis:
+    image: redis:6.2.6-alpine
+    ports:
+      - "6379:6379/tcp"
+    volumes:
+      - ../data/redis:/data
+
+  backend:
+    <<: *backend-app
+    entrypoint: ./docker-entrypoint-dev.sh
+    command: bundle exec rails server -b 0.0.0.0
+    volumes:
+      - .:/rails:rw
+      - /rails/tmp/cache/bootsnap
+      - /rails/node_modules
+    ports:
+      - "3000:3000/tcp"
+    depends_on:
+      - postgres
+      - redis
+
+  sidekiq:
+    <<: *backend-app
+    command: bundle exec sidekiq
+    volumes:
+      - .:/rails:rw
+      - /rails/tmp/cache/bootsnap
+    depends_on:
+      - postgres
+      - redis
 
