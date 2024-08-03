@@ -71,8 +71,6 @@ Rails.application.configure do
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "vhospital2_production"
 
-  config.action_mailer.perform_caching = false
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
@@ -95,10 +93,12 @@ Rails.application.configure do
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
 
-  config.active_job.queue_adapter = :sidekiq
+  # Letter opener configuration
+  # Letter opener configuration
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.perform_caching = false
 
-  config.action_mailer.delivery_method = :mailtrap
-  config.action_mailer.mailtrap_settings = {
-    api_key: ENV.fetch('MAILTRAP_API_KEY')
-  }
+  config.active_job.queue_adapter = :sidekiq
 end
