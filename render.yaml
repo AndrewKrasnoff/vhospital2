@@ -1,67 +1,22 @@
-# databases:
-#   - name: vhospital2
-#     databaseName: vhospital2
-#     user: vhospital2
-#     plan: free
-
-# services:
-#   - type: web
-#     name: vhospital2
-#     runtime: ruby
-#     plan: free
-#     buildCommand: "./bin/render-build.sh"
-#     startCommand: "bundle exec rails server"
-#     envVars:
-#       - key: DATABASE_URL
-#         fromDatabase:
-#           name: vhospital2
-#           property: connectionString
-#       - key: RAILS_MASTER_KEY
-#         sync: false
-#       - key: WEB_CONCURRENCY
-#         value: 2 # sensible default
-
-# Exported from Render on 2024-08-03T20:45:50Z
 databases:
-- name: vhospital2
-  databaseName: vhospital2_m3a2
-  user: vhospital2
-  plan: free
-  region: oregon
-  ipAllowList:
-  - source: 0.0.0.0/0
-    description: everywhere
-  postgresMajorVersion: "16"
-services:
-- type: web
-  name: vhospital2
-  runtime: ruby
-  repo: https://github.com/AndrewKrasnoff/vhospital2
-  plan: free
-  envVars:
-  - key: WEB_CONCURRENCY
-    sync: false
-  - key: REDIS_URL
-    fromService:
-      name: vhospital2
-      type: redis
-      property: hostport
-  - key: RAILS_MASTER_KEY
-    sync: false
-  - key: DISABLE_DATABASE_ENVIRONMENT_CHECK
-    sync: false
-  - key: DATABASE_URL
-    fromDatabase:
-      name: vhospital2
-      property: connectionString
-  region: oregon
-  buildCommand: ./bin/render-build.sh
-  startCommand: bundle exec rails server
-- type: redis
-  name: vhospital2
-  plan: free
-  region: oregon
-  maxmemoryPolicy: allkeys-lru
-  ipAllowList: []
-version: "1"
+  - name: vhospital2
+    databaseName: vhospital2
+    user: vhospital2
+    plan: free
 
+services:
+  - type: web
+    name: vhospital2
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: vhospital2
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default

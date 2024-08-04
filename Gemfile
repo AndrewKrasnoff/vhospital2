@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '3.2.2'
 
-gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
+# gem 'autoprefixer-rails', '~> 10.4', '>= 10.4.16.0'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3', '>= 5.3.3'
 gem 'cancancan', '~> 3.6', '>= 3.6.1'
