@@ -57,6 +57,7 @@ services:
   region: oregon
   buildCommand: ./bin/render-build.sh
   startCommand: bundle exec rails server
+  
 - type: redis
   name: vhospital2
   plan: free

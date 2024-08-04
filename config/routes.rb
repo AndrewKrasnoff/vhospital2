@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :categories, except: :destroy
   resources :appointments
 
-  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' unless Rails.env.test?
 
   mount Sidekiq::Web => '/sidekiq_'
 end
